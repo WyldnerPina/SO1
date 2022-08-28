@@ -26,10 +26,12 @@ public class RedesController {
 //===============================================================================================
 	public void ip() {
 		String os = os();
-		String comando;
+		String comando, wordSeek;
 		if (os.contains("Win")) {
+			wordSeek = "IPv4";
 			comando = "IPCONFIG";
 		} else {
+			wordSeek = "inet";
 			comando = "IFCONFIG";
 		}
 //===============================================================================================		
@@ -43,7 +45,7 @@ public class RedesController {
 			BufferedReader buffer = new BufferedReader(leitor);
 			String linha = buffer.readLine();
 			while (linha != null) {
-				if (linha.contains("IPv4")) {
+				if (linha.contains(wordSeek)) {
 					System.out.println(linha);
 //					JOptionPane.showMessageDialog(null, linha);
 				}
