@@ -16,11 +16,9 @@ public class Main {
 					+ " 9 - Sair daqui \n"
 					+ ""));
 			switch(opc) {
-				case 1 : String p = "ipconfig";
-						 r.ip(p);
+				case 1 : r.ip();
 					break;
-				case 2 : String processo = "PING -4 -n 10 www.google.com.br";
-						 r.ping(processo);
+				case 2 : r.ping();
 					break;
 				case 9 : JOptionPane.showMessageDialog(null, "Flwwwww");
 					break;
