@@ -5,6 +5,10 @@ public class CodUsados {
 		super();
 	}
 	
+// OBS: ISSO AQUI É PRA MIM, COISAS Q PENSEI Q GOSTO DE LEMBRAR COMO EU ESTAVA PENSANDO
+//	ANTES DE IR PELO CAMINHO Q FUI, ENTÃO DESCONSIDERE, SÃO SÓ ESTUDOS
+	
+	
 //	String p = "C:\\Windows\\system32\\cmd.exe";
 //	String p = "cmd /c start cmd.exe"; abre cmd já como adm
 	

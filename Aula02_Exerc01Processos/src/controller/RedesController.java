@@ -31,8 +31,8 @@ public class RedesController {
 			wordSeek = "IPv4";
 			comando = "IPCONFIG";
 		} else {
-			wordSeek = "inet";
-			comando = "IFCONFIG";
+			wordSeek = "inet ";
+			comando = "ifconfig";
 		}
 //===============================================================================================		
 

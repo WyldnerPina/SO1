@@ -54,20 +54,17 @@ public class KillController {
 	
 	
 //===============================================================================================	
-//=================================== KILLING PROCESS WIN =======================================
-//===============================================================================================
-	public void killProcess(String parametro) {
-		String os = os();
-		String cmdPid, cmdNome;
+//=================================== KILLING PROCESS PID =======================================
+//===============================================================================================	
+	public void mataPid(String parametro) {
+		String os = os();		
+		String cmdPid;
 		if(os.contains("Win")) {
-			cmdPid = "TASKKILL /PID";
-			cmdNome = "TASKKILL /IM";	
+			cmdPid = "TASKKILL /PID";			
 		} else {
-			cmdPid = "kill -9";
-			cmdNome = " pkill -f";
-		}
-		
-//===============================================================================================		
+			cmdPid = "kill -9";			
+		}		
+//===============================================================================================
 		
 		int pid = 0;
 		StringBuffer buffer = new StringBuffer();
@@ -77,15 +74,41 @@ public class KillController {
 			buffer.append(cmdPid);
 			buffer.append(" ");
 			buffer.append(pid);
+			executaComando(buffer.toString());
+		} catch (NumberFormatException e) {//NOME	
+			System.err.println("Insira apenas números");
+		}
+		
+	}
+
+	
+//===============================================================================================	
+//================================== KILLING PROCESS NAME =======================================
+//===============================================================================================	
+	public void mataNome(String parametro) {
+		String os = os();	
+		String cmdNome;
+		if(os.contains("Win")) {			
+			cmdNome = "TASKKILL /IM";	
+		} else {			
+			cmdNome = " pkill -f";
+		}		
+//===============================================================================================
+		
+		StringBuffer buffer = new StringBuffer();
+		
+		try {// PID
+			Integer.parseInt(parametro);			
+			System.err.println("digite um nome");
 		} catch (NumberFormatException e) {//NOME
 			buffer.append(cmdNome);
 			buffer.append(" ");
 			buffer.append(parametro);
+			executaComando(buffer.toString());
 		}
-		executaComando(buffer.toString());
 	}
 	
-	
+
 //===============================================================================================
 //===================================== EXECUTA COMANDO =========================================
 //===============================================================================================
@@ -96,20 +119,6 @@ public class KillController {
 		} catch (Exception e) {
 			String msgErro = e.getMessage();
 			System.err.println(msgErro);
-
-//			if (msgErro.contains("740")) {
-//				StringBuffer buffer = new StringBuffer();
-//				buffer.append("cmd /c");
-//				buffer.append(" ");
-//				buffer.append(process);				
-//				try {
-//					Runtime.getRuntime().exec(buffer.toString());
-//				} catch (IOException e1) {
-//					e1.printStackTrace();
-//				}
-//			} else { 
-//				System.err.println(msgErro);
-//			}
 		}
 
 	}	
