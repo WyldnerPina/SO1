@@ -9,36 +9,35 @@ public class Main {
 //===================================================================================================
 //================================== CRIANDO MATRIX ALEATÓRIA 3X5 ===================================
 //===================================================================================================
-		for(int L = 0; L < 3; L++) {
-			for(int C = 0; C < 5; C++) { // no enunciado fala números aleatórios, sem range, fiz 0 a 9
-				matx[L][C] = (int)(Math.random()*10);
+		for (int L = 0; L < 3; L++) {
+			for (int C = 0; C < 5; C++) { // no enunciado fala números aleatórios, sem range, fiz 0 a 9
+				matx[L][C] = (int) (Math.random() * 10);
 			}
 		}
-		
+
+//===================================================================================================		
+//======================================= IMPRIMINDO MATRIX =========================================
+//===================================================================================================
+		for (int L = 0; L < 3; L++) {
+			for (int C = 0; C < 5; C++) {
+				System.out.print(matx[L][C] + "  ");
+			}
+			System.out.println();
+		}
+
 //===================================================================================================		
 //========================= ENVIANDO LINHAS DA MATRIX COMO VETOR PARA SOMA ==========================
 //===================================================================================================
 		int tam = matx[0].length;// só colocar o zero e pego colunas, matx.length = número de linhas
-			
-		for(int L = 0; L < 3; L++) {
+
+		for (int L = 0; L < 3; L++) {
 			int[] vetAux = new int[tam];// se vai usar vários diferentes CRIE DENTRO!!!
-			for(int C = 0; C < 5; C++) {				
-				vetAux[C] = matx[L][C];				
-			}			
-			Thread contando = new Exerc03(vetAux, tam, L); 
+			for (int C = 0; C < 5; C++) {
+				vetAux[C] = matx[L][C];
+			}
+			Thread contando = new Exerc03(vetAux, tam, L);
 			contando.start();
 		}
-		
-//===================================================================================================		
-//======================================= IMPRIMINDO MATRIX =========================================
-//===================================================================================================
-		for(int L = 0; L < 3; L++) {
-			for(int C = 0; C < 5; C++) {				
-				System.out.print(matx[L][C] + "  ");
-			}
-			System.out.println();
-		}	
-		
 	}
 
 }
