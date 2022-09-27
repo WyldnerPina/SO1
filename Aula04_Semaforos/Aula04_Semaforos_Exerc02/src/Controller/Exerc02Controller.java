@@ -5,50 +5,69 @@ import java.util.concurrent.Semaphore;
 public class Exerc02Controller extends Thread{
 	private int id;
 	private Semaphore semaforo;
+	
 	public Exerc02Controller(int id, Semaphore semaforo) {
 		this.id = id;
 		this.semaforo = semaforo;
 	}
+//=========================================================================================	
+
 	
 //=========================================================================================	
 	public void run() {
-		carroAndando();
+		cruzamento();
 //		--------------- INÍCIO SEÇÃO CRÍTICA ---------------		
 		try {
 			semaforo.acquire();
-			carroEstacionado();			
+			cruzando();			
 		} catch (InterruptedException e) {			
 			e.printStackTrace();
 		}finally{
 			semaforo.release();
 		}	
-//		----------------- FIM SEÇÃO CRÍTICA ----------------
-//		carroSaindo();
+//		----------------- FIM SEÇÃO CRÍTICA ----------------		
 	}
-	
-	
-	
-	
-	
 //=========================================================================================		
-	private void carroAndando() {
-//		int distanciaTotal = (int)((Math.random()*1001) + 1000);
-	}
-	
-	
-	
-	
-//=========================================================================================		
-	private void carroEstacionado() {
-		System.out.println("Carro " + id + " estacionou");
-		
-		int tempo = (int)((Math.random()*2001)+1000);// do 0 até o 2000... somando 1000 = do 1000 até 3000
-		try {
-			sleep(tempo);// tempo parado
-		} catch (InterruptedException e) {			
-			e.printStackTrace();
-		}
-	}
 
+	
+//=========================================================================================		
+	
+	private void cruzamento() {		
+		switch (id) {
+		case 0:
+			String sentidoN = "Norte";
+			System.out.println("Carro  " + id + " chegou no cruzamento pelo " + sentidoN);	
+			break;
+		case 1:
+			String sentidoS = "Sul";
+			System.out.println("Carro  " + id + " chegou no cruzamento pelo " + sentidoS);
+			break;
+		case 2:
+			String sentidoL = "Leste";
+			System.out.println("Carro  " + id + " chegou no cruzamento pelo " + sentidoL);
+			break;
+		case 3:
+			String sentidoO = "Oeste";
+			System.out.println("Carro  " + id + " chegou no cruzamento pelo " + sentidoO);
+			break;		
+		}
+	}	
+//=========================================================================================		
+
+	
+//=========================================================================================	
+		private void cruzando() {
+			System.out.println("O Carro " + id + " está cruzando");
+
+			int tempo = (int) (Math.random() * 1001);
+			try {
+				sleep(tempo);
+				System.out.println("Carro  " + id + " cruzou");
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	
+//=========================================================================================
 }
 
