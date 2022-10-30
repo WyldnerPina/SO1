@@ -61,7 +61,7 @@ public class ArqvosController implements IArqvosController {
 			 if(arq.exists()) {//condição de existência
 				 existe = true;
 			 }
-			 String conteudo = gereTXT();
+			 String conteudo = geraTXT();
 			 FileWriter fileWriter = new FileWriter(arq, existe);//responsável por abrir arqv e definir operação write ou append
 			 // se eu não passar o boolean existe ele sempre vai gravar por cima usando o write
 			 PrintWriter print = new PrintWriter(fileWriter);// quem escreve/print o conteúdo no arqv
@@ -78,7 +78,7 @@ public class ArqvosController implements IArqvosController {
 	}
 
 //--------------------------------------------------------------------------------------------------------------------	
-	private String gereTXT() {// sendo privado não precisa estar na interface// AQUI VAI GERAR O CONTEÚDO DO TXT
+	private String geraTXT() {// sendo privado não precisa estar na interface// AQUI VAI GERAR O CONTEÚDO DO TXT
 		StringBuffer buffer = new StringBuffer();
 		String linha = " ";
 		while(!linha.equalsIgnoreCase("fim")) {//enqnto a linha não for fim faça
